@@ -39,7 +39,7 @@ class SnippetSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Snippet
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
+        fields = ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner')
 
     # ModelSerializer 는 그저 시리얼라이저 클래스의 단축 버전일 뿐이다.
     # 필드를 자동으로 인식한다.

@@ -96,11 +96,26 @@ from rest_framework import generics
 
 ###################################### 제네릭 클래스 사용 ######################################
 
+"""
+REST 는 특정 뷰에 제한을 걸 수 있는 권한 클래스를 제공한다.
+그 중 한 가지인 IsAuthenticatedOrReadOnly 는 인증 받은 요청에 읽기와 쓰기 권한을 부여하고,
+인증 받지 않은 요청에 대해서는 읽기 권한만 부여한다.
+"""
+from rest_framework import permissions
+
+
 class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
