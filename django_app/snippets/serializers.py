@@ -37,12 +37,10 @@ class SnippetSerializer(serializers.ModelSerializer):
     REST 에서도 Serializer 클래스와 ModelSerializer 클래스를 제공한다.
     이는 ModelSerializer 클래스를 사용한 것이다.
     """
-    if __name__ == '__main__':
-        if __name__ == '__main__':
-            class Meta:
-                model = Snippet
-                fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
+    class Meta:
+        model = Snippet
+        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
 
-            # ModelSerializer 는 그저 시리얼라이저 클래스의 단축 버전일 뿐이다.
-            # 필드를 자동으로 인식한다.
-            # create() 와 update() 가 이미 구현되어 있다.
+    # ModelSerializer 는 그저 시리얼라이저 클래스의 단축 버전일 뿐이다.
+    # 필드를 자동으로 인식한다.
+    # create() 와 update() 가 이미 구현되어 있다.
