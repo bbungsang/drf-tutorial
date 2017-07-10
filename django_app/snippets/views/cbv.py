@@ -9,6 +9,8 @@ from rest_framework import status
 
 # 믹스인 클래스 사용할 때 필요한 모듈
 from rest_framework import mixins
+
+# 믹스인, 제네릭 클래스 사용할 때 필요한 모듈
 from rest_framework import generics
 
 
@@ -90,3 +92,15 @@ from rest_framework import generics
 #
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
+
+
+###################################### 제네릭 클래스 사용 ######################################
+
+class SnippetList(generics.ListCreateAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
+
+
+class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Snippet.objects.all()
+    serializer_class = SnippetSerializer
